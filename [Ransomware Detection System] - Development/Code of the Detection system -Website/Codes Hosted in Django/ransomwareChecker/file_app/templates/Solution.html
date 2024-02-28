@@ -1,0 +1,596 @@
+
+{% load static %} <!-- this loads the static files for the project -->
+<!--this begins the html code-->
+<!DOCTYPE html>
+<html>
+  <head> <!-- this includes the metadata about the page including the stylesheets and scripts -->
+    <style>
+        /*this provides effects on the visible areas of the browser window */
+      /* CSS code goes here */
+      /* this provides the effect to the visible area of the body section */
+      body {
+        height: 100vh;
+        overflow: scroll; /* this adds a scrollbar to the content exceeding it's height */
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
+    }
+
+    /* this creates a flexible, fixed, evenly distributed centered items with transparent background */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0px;
+    }
+
+    /* this creates a black background to the navigation bar on scrolling */
+    nav.scrolled{
+        background-color: black;
+    }
+
+    /* This applies style to lists within the navigation bar */
+    nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+    /* This applies style to the list items within the navigation bar */
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    /* this applies style to all anchor tags within nav bar */
+    nav ul li a {
+        color: #f7f2f2;
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease-in-out;
+    }
+    /* this applies style to the anchor tags when hover over within the navigation bar */
+    nav ul li a:hover {
+        opacity: 1;
+    }   
+
+    /* this provides style to the html element with ID 'header' */
+    #header {
+        height: 35%;
+        padding-top: 10%;
+        background-image:url({% static 'background4.png' %})
+    }
+
+    /* this provides style to the html element with ID 'content' */
+    #content {
+        height: cover;
+        background-color: #010108;
+    }
+  
+    /* this provides style to the html element with ID 'footer' 
+        where the display is flexible and it will stick to the bottom of the viewport with browser compatibility */
+    #footer {
+        height: 400px;
+        background-color: #111311;
+        color: #f6f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        justify-content: center;
+        position: -webkit-sticky;
+        width: 100%;
+      }
+      
+    /* this provides style to the button element with a transition effect */
+    .button {
+        display: inline-block;
+        background-color: #0b0e11;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #fff;
+        border-style: solid;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out;
+    }
+    /* this changes background color when hover over */
+    .button:hover {
+        background-color: #2a296e;
+        
+    }
+
+    /* this provides style to the button element with a transition effect */
+    .button2 {
+        display: inline-block;
+        background-color: #ae3c3c;
+        color: #0d0a0a;
+        padding: 5px 20px;
+        border-radius: 5px;
+        border-width: 2px;
+        margin-left: 2%;
+        margin-top: 3%;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out;
+    }
+    
+    /* this changes background color with style when hover over */
+    .button2:hover {
+        background-color: #09090b;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #fff;
+        border-style: solid;
+        color: white;
+    }
+
+    /* this provides style to location to place a logo */
+    .logo {
+        padding-left: 5%;
+        display: flex;
+        align-items: center;
+    }
+
+    /* this provides style to the text appeared beside the logo */
+    .logo-text{
+        margin-left: 6px;
+        color: white;
+        font-weight: 700;
+    }
+
+    /* this provides the height and width of the logo */
+    .logo img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* this provides the style for heading 1 */ 
+    h1 {
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: 200;
+        font-size: 50px;
+        color: white;
+        padding-left: 2%;
+        line-height: 50%;
+    }
+
+    /* this provides the style for heading 2 */
+    h2 {
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: 200;
+        font-size: 25px;
+        color: rgb(253, 248, 248);
+        padding-left: 2%;
+        margin-top: 5%;
+    }
+
+    /* this provides the style for  heading 3 */
+    h3 {
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: 200;
+        line-height: 150%;
+        color: white;
+    }
+
+    /* this provides a flexible container that holds a set of columns */
+    .container {
+        display:flex;
+        flex-direction: row;
+        margin: 0.25px;
+    }
+
+    /* this sets the style for each individual flexible column */
+    .column {
+        flex: 2;          
+        flex-basis: 5px;
+        flex-wrap: wrap;
+        padding: 10px;
+        padding-left: 6%;
+        padding-right: 6%;
+        padding-top: 3%;
+        padding-bottom: 11.8%;
+        margin-left: 2%;
+        box-shadow: 0 0 5px rgb(243, 241, 241);
+    }
+
+    /* this sets the margin of heading 3 in '.column' class */    
+    .column h3 {
+        margin-top: 0px;
+    }
+
+    /* this sets the style for the  child element within the container */
+    .combined {
+        background-color: #010108;
+        height: 600px;
+        width: 100%;
+        margin-bottom: 5%;
+        padding-top: 20px;
+    }
+
+    /* this sets the margin of heading 3 in '.combined' class */
+    .combined h3 {
+        margin-top: 0;
+    }
+
+    /* this sets the margin of paragraph in '.combined' class */
+    .combined p {
+        margin-bottom: 0;
+    }
+
+    /* this sets the style for each individual flexible column */
+    .column2 {
+        flex: 2;
+        padding: 20px 20px;
+        background-color: #050505;
+        padding-right: 10%;
+        padding-bottom: 10%;
+        justify-content: space-between;
+        padding-top: 12%;
+        margin-right: 3%;
+        height: 30%;
+        box-shadow: 0 0 5px rgb(243, 241, 241);
+        margin-top: 70%; 
+        color: #606060;
+    }
+
+    /* this sets the style of paragraph within the column */
+    .column2 p {
+        font-size: 16px;
+        text-align:justify;
+        padding-left:30%;
+        margin-top: -20%;
+    }
+
+    /* this sets the style for anchor used to create a hyperlink or link */
+    a {
+        text-decoration: none;
+        color: #606060;
+        line-height: 40px;   
+    }
+
+    /* This provides style for a rectangular box */
+    .box {
+        width: 37%;
+        margin-bottom: 20px;
+        height: 230px;
+        margin-left: 30px;
+        background-color: #1b1b1b;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border-width: 2px;
+    }
+
+    /* This provides style for email input field within the class '.box' */
+    .box form input[type="email"] {
+        background-color: black;
+        color: #606060;
+        border: 2px solid #606060;;
+        padding: 10px;
+        width: 200px;
+        height: 20px;
+        border-radius: 5px;
+        border-width: 2px;
+    }
+
+    /* This provides style for the submission button within the '.box' class */
+    .box form button[type="submit"] {
+        background-color: black;
+        color: #606060;
+        border: 2px solid #606060;
+        padding: 13px 20px;
+        transition: background-color 0.3s;
+        border-radius: 5px;
+        border-width: 2px;
+    }
+    
+    /* this changes background color of submission button when hovered over */
+    .box form button[type="submit"]:hover {
+        background-color: #2e2e5b;
+        cursor: pointer;
+    }
+
+    /* this provides style to table headings */
+    th{
+        border:1px solid #606060;
+        color: white;
+    } 
+
+    /* this provides style to the input file of type 'file' within '.combined' class */
+    .combined form input[type="file"]{
+        display: inline-block;
+        background-color: #242424;
+        color: #f2e8e8;
+        padding: 10px 20px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 2px;
+        margin-left: 2%;
+        margin-top: 3%;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    /* this provides style to the input file of type ' file' when hovered over */
+    .combined form input[type="file"]:hover {
+        background-color: #09090b;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #fff;
+        border-style: solid;
+        color: white;
+    }
+
+    /* this provides style with transition effect to the submission button within the '.combined' class */
+    .combined form button[type="submit"] {
+        display: inline-block;
+        background-color: #ae3c3c;
+        color: #0d0a0a;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border-width: 2px;
+        margin-left: 2%;
+        margin-top: 3%;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    /* this provides style to the submission button when hovered over */
+    .combined form button[type="submit"]:hover {
+        background-color: #09090b;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #fff;
+        border-style: solid;
+        color: white;
+    }
+
+    /* this provides style and animation to spinner indicating loading */
+    .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #009688;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+    }
+      
+    /* this provides a rotation of 360 degrees on element starting from 0% to 100% on completion */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* CSS coding ends */
+    </style>
+
+    <!-- this is a javascript used for the scroll and navigation element -->
+    <script>
+        /* this javascript adds class 'scrolled' when the user scrolls down and remoes it when the user is at the top of the page */
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('nav');
+            const scrollPosition = window.scrollY;
+          
+            if (scrollPosition > 0) {
+              header.classList.add('scrolled');
+            } else {
+              header.classList.remove('scrolled');
+            }
+          });    
+    </script>
+
+    <!-- this includes an external resources such as a font-awesome stylesheet used to include it's library providing a sets of icons and symbols that cna be used within the webpage-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />  
+    
+  </head>
+
+
+  <body>
+    <!-- this is the main content area -->
+    <!-- the displays the elements in the navigation bar -->
+    <nav>
+        <!-- this displays the lgogo and text with the brand name 'RMS' (Ransomware Monitoring/ Management System)-->
+        <div class="logo">
+            <img src="{% static 'logo.PNG' %}" alt="Logo">
+            <p class="logo-text">RMS</p>
+        </div>
+
+        <!-- this displays the anchor that don't have specific order for a list in navigation bar -->
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#" onclick="location.reload();">Solution</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Program.html">Programs</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfqtDHnlqk-n4Ohk3vMa_wRdxoJ3W3Djf51gySSf4GPp_RNmA/viewform?usp=sf_link" class="button">Get Started</a></li>
+        </ul>
+
+    </nav>
+    <!-- this is a header section-->
+    <div id="header">
+    <h1>Dive Into the New Age of</h1>
+    <h1>Cyber Security</h1>
+    <h2>Our Security</h2>
+    </div>
+    
+    <!-- this is a content section-->
+    <div id="content">
+        <!-- this section contains a table with rows each including features of the system with an image, heading and a description which is clickable-->
+        <div class="combined">
+            <table style="width:95%; margin-left:2%; margin-right:5%;border-collapse: collapse; margin-top:-2%;">
+                <tr>
+                  <th style="width:20%; height:200px;"><img src="{% static 'ransomware-detection2.png'%}" alt="small photo" height="55px" width="60px" style="border-radius:5px; border-width:2px; margin-top:2%; margin-bottom:2%;"></th>
+                  <th>
+                    <a href='#scanning'><h2 style="text-align: left; margin-top:-5%;">Ransomware Detection</h2></a>
+                    <p style="color:#606060; font-size:14px; text-align: left; padding-left:30px;">You can scan your system and search for cyberattacks that your system is vulnerable <br>to. Our team will guide you throughout the process and help you secure your system.</p>
+                  </th>
+                </tr>
+                <tr>
+                    <th style="width:20%; height:200px;"><img src="{% static 'KYDS2.png' %}" alt="small photo" height="55px" width="60px" style="border-radius:5px; border-width:2px; margin-top:2%; margin-bottom:2%;"></th>
+                    <th>
+                        <a href='#scanning'><h2 style="text-align: left; margin-top:-5%;">Keeps your data safe</h2></a>
+                        <p style="color:#606060; font-size:14px; text-align: left; padding-left:30px;">This system can be easily implemented and used by any user whether they have <br>knowledge about cyber attacks or not.</p>
+                      </th>
+                  </tr>
+                  <tr>
+                    <th style="width:20%; height:200px;"><img src="{% static 'DCF2.png' %}" alt="small photo" height="55px" width="60px" style="border-radius:5px; border-width:2px; margin-top:2%; margin-bottom:2%;"></th>
+                    <th>
+                        <a href='#scanning'><h2 style="text-align: left; margin-top:-5%;">Deletion of corrupted files</h2></a>
+                        <p style="color:#606060; font-size:14px; text-align: left; padding-left:30px;">Hi there, I am DEL. I would be deleting your ransomware files if I find any of those <br>within your system.</p>
+                      </th>
+                  </tr>
+                  <tr>
+                    <th style="width:20%; height:200px;"><img src="{% static 'FCES2.png' %}" alt="small photo" height="55px" width="60px" style="border-radius:5px; border-width:2px; margin-top:2%; margin-bottom:2%;"></th>
+                    <th>
+                        <a href='Program.html'><h2 style="text-align: left; margin-top:-5%;">Full Customer Experience Service</h2></a>
+                        <p style="color:#606060; font-size:14px; text-align: left; padding-left:30px;">You can contact us directly by emailing, calling, or messaging us and we would surely <br>get back to you within 24 hrs.</p>
+                      </th>
+                  </tr>
+              </table> 
+              <!-- this allows the user to upoad file to detect ransomware-->
+              <table style="width:95%; margin-left:2%; margin-right:5%;border-collapse: collapse;">
+                <tr id = "scanning">
+                    <th style="width:95%; height:800px;">
+                        <h2 style="text-align: center; margin-top:15%;">Choose the File from below on suspicion of Ransomware</h2>
+                        <!-- this displays a loading spinner when clicked on scan button till the data are not loaded into it -->
+                        <form method="post" enctype="multipart/form-data" onsubmit="document.getElementById('loading').style.display = 'block';">
+                            <label for="file-upload" style="color:#606060;">Select a file:</label>
+                            <h3 style ="text-align: center; color: teal;">Note: All the ransomware scanned are updated to only 2022.</h3>
+                            <!-- this code gets the data and displays it from the py file i.e the python file that is executed when the file submitted-->
+                            {% if file_path %}
+                                <p>File path: {{ file_path }}</p>
+                            {% endif %}
+                            {% if mod_time %}
+                                <p>File modified time: {{ mod_time }}</p>
+                            {% endif %}
+                            {% if creat_time %}
+                                <p>File created time: {{ creat_time }}</p>
+                            {% endif %}
+                            {% if access_time %}
+                                <p>File access time: {{ access_time }}</p>
+                            {% endif %}
+                            {% if file_size1 != None %}
+                                <p>The File size in MB: {{ file_size1 }}MB</p>
+                            {% elif file_size != None %}
+                                <p>The File size in bytes: {{ file_size }}Bytes</p>
+                            {% endif %}
+                            {% if ransomware_alert == True %}
+                                <p style ="color: Red; font-size:30px;" >ALERT! The file is infected with Ransomware.</p>
+                                {%if name %}
+                                    <p>The file is infected with: <span style="color: red; font-size: 30px">{{ name }}</span></p>
+                                {% endif %}
+                                {% if file_deleted %}
+                                    <p style ="color: Red; font-size:30px;"> The content of the file affected by ransomware has been successfully deleted.</p>
+                                {% else %}
+                                    <p style ="color: Blue; font-size:30px;"> The Content of the file cannot be removed.</p>
+                                {% endif %}
+                            {% elif ransomware_alert == False %}
+                                <p style ="color: Green; font-size:30px;"> The file has been scanned and is not infected with ransomware.</p>
+                            {% endif %}
+
+                            {% if not file_path and not mod_time and not creat_time and not access_time and not file_size and not ransomware_alert and not file_deleted %}
+                                <p>No file has been uploaded.</p>
+                            {% endif %}
+                            {% if permission_error %}
+                                <p>Error: {{ permission_error }}</p>
+                            {% endif %}
+                            <!-- this loading spinner animation is initally hidden and will be shown during scanning-->
+                            <div id="loading" style="display: none;"><br>
+                                <div class="spinner" style="margin: 0 auto;"></div>
+                                <p>Please wait while the file is being scanned...</p>
+                            </div>
+                            <!-- the form element takes an input as a file and contains a submission buton and a download button-->                                                     
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                            <input type="file" name="file" id="file">
+                            <button type="submit" value="Scan">Scan</button>
+                            <br><a href = "{% static 'development.exe' %}" style = "
+                            display: inline-block;
+                            background-color: #ae3c3c;
+                            color: #0d0a0a;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            border-width: 2px;
+                            margin-left: 2%;
+                            margin-top: 3%;
+                            text-decoration: none;
+                            font-size: 14px;
+                            transition: background-color 0.2s ease-in-out;" >Download</a>
+                            <!-- this is used to pass the value of the file_path to for deletion of ransomware content-->
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="file" value="{{ file_path }}">
+                            </form>
+                          </form>  
+                    </th>
+                  </tr>
+              </table>
+        </div> 
+    
+        <!-- this creates a container with two sie-by- side columns in which one column has a image displaued whereas another has text and a button displayed-->
+    <div class="container">
+        <div class="column" style="background-image:url({% static 'background6.png' %}); background-size: 95%; background-position: center; background-repeat: no-repeat;margin-top: 70%;height:30%;">       
+            <h3 style="font-size: 25px; text-align: center;margin-top:10%;"><br><br><br>Ransomware Attacks Will <br>Cost Millions? <br> We got you!</h3>
+        </div>
+        <div class="column2">
+            <p>Ransomware attacks have become increasingly prevalent in recent years, with cybercriminals exploiting vulnerabilities in computer systems to lock users out of their own data and demanding payment in exchange for restoring access. However, there are a number of steps that individuals and organizations can take to minimize the risk of falling victim to a ransomware attack. By staying vigilant and adopting best practices for cybersecurity, you can help protect yourself and your data from the devastating consequences of a ransomware attack.Learn what you can do to avoid being a victim of a ransomware attack.</p>
+            <a href="Program.html" class="button2" style="margin-left: 30%;">Learn More</a>
+        </div>
+    </div>
+
+    <!-- This is the footer section which includes logo, contact information, navigation links, a newletter subscription form and a social media links -->
+    <div id="footer">
+        <div class="box" style="background-color:transparent;">
+            <div class="logo">
+                <img src="{% static 'logo.PNG' %}" alt="Logo">
+                <p class="logo-text">RMS</p>
+            </div>
+            <p style="line-height: 40px; padding-left: 10%;color:#606060;">977-9847694121<br>
+
+                aarya.aamatya@gmail.com<br>
+                
+                Lagankhel, Lalitpur<br>
+                
+                Lalitpur, Nepal</p>
+          </div>
+          <div class="box" style="background-color: transparent;">
+            <a href="/">Home</a><br>
+            <a href="Solution.html">Solution</a><br>
+            <a href="About.html">About</a><br>
+            <a href="Program.html">Programs</a><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqtDHnlqk-n4Ohk3vMa_wRdxoJ3W3Djf51gySSf4GPp_RNmA/viewform?usp=sf_link" class="button2" style="margin-left: -1%;">Get Started</a>
+          </div>
+          <div class="box" style="background-color: transparent;">
+            <br>
+            <form action="https://formspree.io/f/xyyaerjq" method="POST">
+                <label for="email" style="color:#606060;">Subscribe to Our Newsletter</label>
+                <br>
+                <p style="color:#606060">Email*</p>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+                <button type="submit">submit</button>
+            </form>
+               
+          </div>
+          <div class="box" style="background-color: transparent;">
+            <p style="color:#606060; margin-bottom:-6%; margin-left: 12%;">Follow Us On:</p>
+            <ul>
+                <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a> &nbsp;
+                <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a> &nbsp;
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <p style="color:#606060; font-size:12px;margin-top:35%;">© 2023 by RMS.<br> Proudly created by <br>Arya Amatya</p>
+              </ul>
+            </div>
+    </div>
+  </body>
+</html>
+
